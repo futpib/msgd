@@ -29,8 +29,8 @@ const bot = new TelegramBot(token, {
 	} : {},
 });
 
-bot.on('message', msg => {
-	bot.sendMessage(msg.chat.id, yaml.safeDump(msg));
+bot.on('message', message => {
+	bot.sendMessage(message.chat.id, yaml.safeDump(message));
 });
 
 bot.on('polling_error', error => {
