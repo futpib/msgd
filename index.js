@@ -15,7 +15,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const Agent = require('socks5-https-client/lib/Agent');
 
 const token = process.env.TOKEN;
-const useTor = process.env.NODE_ENV !== 'production';
+const useTor = Boolean(process.env.SOCKS_HOST);
 const socksHost = process.env.SOCKS_HOST || 'localhost';
 
 const bot = new TelegramBot(token, {
@@ -30,7 +30,18 @@ const bot = new TelegramBot(token, {
 });
 
 bot.on('message', message => {
-	bot.sendMessage(message.chat.id, yaml.safeDump(message));
+	const messageYaml = yaml.dump(message);
+
+	bot.sendMessage(message.chat.id, messageYaml, {
+		entities: [
+			{
+				type: 'pre',
+				language: 'yaml',
+				offset: 0,
+				length: messageYaml.length,
+			},
+		],
+	});
 });
 
 bot.on('polling_error', error => {

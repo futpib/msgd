@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "bluebird": "^3.7.2",
-    "js-yaml": "^3.14.0",
+    "js-yaml": "^4.1.0",
     "make-promises-safe": "^5.1.0",
-    "node-telegram-bot-api": "^0.50.0",
+    "node-telegram-bot-api": "^0.64.0",
     "socks5-https-client": "^1.2.1"
   },
   "devDependencies": {

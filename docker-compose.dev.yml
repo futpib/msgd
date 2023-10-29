@@ -4,8 +4,8 @@ services:
   bot:
     volumes:
     - .:/usr/src/app
-    environment:
-    - SOCKS_HOST=tor
+  #   environment:
+  #   - SOCKS_HOST=tor
 
-  tor:
-    image: dperson/torproxy
+  # tor:
+  #   image: dperson/torproxy
